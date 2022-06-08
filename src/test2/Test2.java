@@ -166,11 +166,11 @@ public class Test2 {
             throw new IOException("Name must be contain only Latin");
         }
         //name checking for numbers
-        if (name.matches("\\d+")){
+        if (name.matches("\\d+")) {
             throw new IOException("Name must be without numbers");
         }
         //checking name length
-        if (name.length() > 10){
+        if (name.length() > 10) {
             throw new IOException("Name must be lower 10 symbols length");
         }
     }
@@ -178,9 +178,9 @@ public class Test2 {
     public static Path checkPath(String inputString) throws IOException {
         Path path = new Path();
         //inputString checking for symbols
-        Pattern patternLatin = Pattern.compile("[a-zA-Z]+");
-        Matcher matcherLatin = patternLatin.matcher(inputString);
-        if (matcherLatin.find()) throw new IOException("Path must be contain only numbers");
+        if (inputString.matches("[a-zA-Z]+")) {
+            throw new IOException("Path must be contain only numbers");
+        }
         //parsing values from inputString
         Pattern patternDigits = Pattern.compile("\\d+");
         Matcher matcherDigits = patternDigits.matcher(inputString);
@@ -200,9 +200,9 @@ public class Test2 {
         String nameTo;
         CityPair cityPair = new CityPair();
         //inputString checking for numbers
-        Pattern patternDigits = Pattern.compile("\\d+");
-        Matcher matcherDigits = patternDigits.matcher(inputString);
-        if (matcherDigits.find()) throw new IOException("Cities must be in form NAME1 NAME2, without numbers");
+        if (inputString.matches("\\d+")) {
+            throw new IOException("Cities must be in form NAME1 NAME2, without numbers");
+        }
         //parsing values from inputString
         Pattern patternLatin = Pattern.compile("\\w+\\S");
         Matcher matcherLatin = patternLatin.matcher(inputString);
