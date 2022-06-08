@@ -162,14 +162,17 @@ public class Test2 {
 
     public static void checkName(String name) throws IOException {
         //name checking for non Latin symbols
-        Pattern patternNonLatin = Pattern.compile("\\W");
-        Matcher matcherNonLatin = patternNonLatin.matcher(name);
-        if (matcherNonLatin.find()) throw new IOException("Name must be contain only Latin");
+        if (name.matches("\\W")) {
+            throw new IOException("Name must be contain only Latin");
+        }
         //name checking for numbers
-        Pattern patternDigits = Pattern.compile("\\d+");
-        Matcher matcherDigits = patternDigits.matcher(name);
-        if (matcherDigits.find()) throw new IOException("Name must be without numbers");
-        if (name.length() > 10) throw new IOException("Name must be lower 10 symbols length");
+        if (name.matches("\\d+")){
+            throw new IOException("Name must be without numbers");
+        }
+        //checking name length
+        if (name.length() > 10){
+            throw new IOException("Name must be lower 10 symbols length");
+        }
     }
 
     public static Path checkPath(String inputString) throws IOException {
